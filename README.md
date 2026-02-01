@@ -1,53 +1,61 @@
-API Universidades
 
-Proyecto desarrollado en Python utilizando FastAPI, basado en la estructura vista en clase para el consumo de APIs externas.
+# API Universidades
+
+Proyecto desarrollado en **Python** utilizando **FastAPI**, basado en la estructura vista en clase para el consumo de APIs externas.
 La API permite consultar universidades por país, consumiendo información desde una API pública y devolviendo una respuesta estructurada.
 
-API externa utilizada
+---
 
-Universities API – Hipolabs
+## 🌐 API externa utilizada
 
-URL base: http://universities.hipolabs.com
+**Universities API – Hipolabs**
 
-Formato: JSON
-
-Autenticación: No requerida
-
-Tipo: API pública
+* **URL base:** `http://universities.hipolabs.com`
+* **Formato:** JSON
+* **Autenticación:** No requerida
+* **Tipo:** API pública
 
 Esta API retorna información de universidades a nivel mundial filtradas por país.
 
-Endpoint implementado
-Obtener universidades por país
+---
 
-URL
+## 📌 Endpoint implementado: Obtener universidades por país
 
+### URL
+
+```
 /universities/{country}
+```
 
+### Método
 
-Método
-
+```
 GET
+```
 
+### Parámetros
 
-Parámetros
+| Nombre  | Tipo   | Descripción                 |
+| ------- | ------ | --------------------------- |
+| country | string | Nombre del país a consultar |
 
-Nombre	             Tipo	                              Descripción
-country	             string	                              Nombre del país a consultar
+---
 
+## 📥 Ejemplo de petición
 
-Ejemplo de petición
-
+```
 GET /universities/colombia
+```
 
-Respuesta exitosa
+---
 
-Código
-200 OK
+## 📤 Respuesta exitosa
 
+**Código:** `200 OK`
 
-Ejemplo de respuesta
+### Ejemplo de respuesta
 
+```json
 {
   "country": "colombia",
   "total": 2,
@@ -64,79 +72,93 @@ Ejemplo de respuesta
     }
   ]
 }
+```
 
-Campos en la respuesta
+---
 
-Campo	                          Tipo	                             Descripción
-name	                          string	                         Nombre de la universidad
-country	                          string	                         País donde está ubicada
-domains	                          array	                             Lista de dominios del sitio web
-web_pages	                      array	                             URLs públicas de la universidad
+## 🧾 Campos en la respuesta
 
+| Campo     | Tipo   | Descripción                     |
+| --------- | ------ | ------------------------------- |
+| name      | string | Nombre de la universidad        |
+| country   | string | País donde está ubicada         |
+| domains   | array  | Lista de dominios del sitio web |
+| web_pages | array  | URLs públicas de la universidad |
 
-Manejo de errores comunes
+---
+
+## ⚠️ Manejo de errores comunes
 
 Aunque esta API pública es simple, podrían darse algunos errores comunes:
 
-Código HTTP	                     Significado	              Causa frecuente
-400	                             Bad Request	              Parámetro inválido o faltante
-404	                             Not Found	                  No hay universidades para el país consultado
-500	                             Server Error	              Error interno del servicio
+| Código HTTP | Significado  | Causa frecuente                   |
+| ----------- | ------------ | --------------------------------- |
+| 400         | Bad Request  | Parámetro inválido o faltante     |
+| 404         | Not Found    | No hay universidades para el país |
+| 500         | Server Error | Error interno del servicio        |
 
+---
 
-Manejo de errores
-Error consultando la API externa
+## 🚨 Manejo de errores: Error consultando la API externa
 
-Código
+### Código
 
+```
 500 Internal Server Error
+```
 
+### Ejemplo
 
-Ejemplo
-
+```json
 {
   "detail": "Error consultando la API de universidades"
 }
-
+```
 
 Este error se presenta cuando la API externa no responde o ocurre un problema en la comunicación.
 
-Tecnologías utilizadas
+---
 
-Python 3
+## 🛠️ Tecnologías utilizadas
 
-FastAPI
+* Python 3
+* FastAPI
+* Uvicorn
+* HTTPX
 
-Uvicorn
+---
 
-HTTPX
+## ▶️ Ejecución del proyecto
 
+### Activar entorno virtual
 
-
-Ejecución del proyecto
-
-Activar entorno virtual:
-
+```bash
 .\venv\Scripts\activate
+```
 
+### Instalar dependencias
 
-Instalar dependencias:
-
+```bash
 pip install -r requirements.txt
+```
 
+### Ejecutar la aplicación
 
-Ejecutar la aplicación:
-
+```bash
 uvicorn main:app --reload
+```
 
+### Acceder a la documentación
 
-Acceder a la documentación:
-
+```
 http://127.0.0.1:8000/docs
+```
 
+---
 
+## 📂 Estructura del proyecto
 
-Estructura del proyecto
+```
 api_universidades/
 ├── clients
 ├── controllers
@@ -146,8 +168,12 @@ api_universidades/
 ├── appsettings.py
 ├── requirements.txt
 └── README.md
+```
 
+---
 
+## 📝 Observación
 
-Observación
 El proyecto reutiliza la estructura base trabajada en clase, adaptándola para el consumo de una nueva API pública, cumpliendo con los lineamientos del taller práctico.
+
+---
